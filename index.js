@@ -9,6 +9,7 @@ client.on("qr", (qr) => {
 
 client.on("ready", () => {
   console.log("Client is ready!");
+  client.sendMessage(chatId, text).then(() => console.log("sent"));
 });
 
 client.on("message", (message) => {
@@ -29,4 +30,3 @@ const chatId = number.substring(1) + "@c.us";
 
 // Sending message.
 client.initialize();
-client.sendMessage(chatId, text).then(() => console.log("sent"));
