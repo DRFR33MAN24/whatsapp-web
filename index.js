@@ -2,7 +2,7 @@ const qrcode = require("qrcode-terminal");
 const express = require("express");
 const { Client, NoAuth, LocalAuth } = require("whatsapp-web.js");
 const axios = require("axios");
-
+let clientReady = false;
 const secret = "1234";
 const client = new Client({
   authStrategy: new LocalAuth(),
@@ -17,8 +17,9 @@ app.use((req, res, next) => {
   }
   next();
 });
+
 app.post("/sendMessage", function (req, res) {
-  const { phone, msg, pass } = req.body;
+  const { phone, msg } = req.body;
   sendMessage(phone, msg);
 });
 
@@ -30,6 +31,7 @@ client.on("qr", (qr) => {
 
 client.on("ready", () => {
   console.log("Client is ready!");
+  clientReady = true;
   client.sendMessage(chatId, text).then(() => console.log("sent"));
 });
 
