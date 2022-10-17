@@ -28,6 +28,5 @@ const text = "Hey john";
 const chatId = number.substring(1) + "@c.us";
 
 // Sending message.
-client.sendMessage(chatId, text);
-
 client.initialize();
+client.sendMessage(chatId, text).then(() => console.log("sent"));
