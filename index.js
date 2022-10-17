@@ -32,7 +32,6 @@ client.on("qr", (qr) => {
 client.on("ready", () => {
   console.log("Client is ready!");
   clientReady = true;
-  client.sendMessage(chatId, text).then(() => console.log("sent"));
 });
 
 client.on("message", (message) => {
@@ -41,15 +40,15 @@ client.on("message", (message) => {
   }
 });
 
-// Number where you want to send the message.
-const number = "+963935950280";
-
-// Your message.
-const text = "Hey john";
-
 // Getting chatId from the number.
 // we have to delete "+" from the beginning and add "@c.us" at the end of the number.
-const chatId = number.substring(1) + "@c.us";
 
 // Sending message.
 client.initialize();
+
+const sendMessage = (phone, msg) => {
+  if (clientReady) {
+    const chatId = phone.substring(1) + "@c.us";
+    client.sendMessage(chatId, msg).then(() => console.log("sent"));
+  }
+};
