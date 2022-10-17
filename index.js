@@ -17,4 +17,17 @@ client.on("message", (message) => {
   }
 });
 
+//   // Number where you want to send the message.
+//  const number = "+911234567890";
+
+//   // Your message.
+//  const text = "Hey john";
+
+//   // Getting chatId from the number.
+//   // we have to delete "+" from the beginning and add "@c.us" at the end of the number.
+//  const chatId = number.substring(1) + "@c.us";
+
+//  // Sending message.
+//  client.sendMessage(chatId, text);
+
 client.initialize();
